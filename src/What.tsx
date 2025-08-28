@@ -1,7 +1,8 @@
 import {NavLink,useNavigate} from "react-router";
 import Button from "@mui/material/Button";
-import todoData from "../public/tododata.ts";
 import TodoCards from "./TodoCards.tsx";
+
+import todoData from "../public/tododata.ts";
 
 const What = () => {
 
@@ -9,7 +10,9 @@ const What = () => {
 
     return (
         <div className = {"what"}>
-            <h1>What</h1>
+            <div style={{display:"flex", flexDirection:"column", width:"100%", alignItems:"center"}}>
+                <h1>What</h1>
+            </div>
             <NavLink to = "/about">About</NavLink>
             <Button style={{width:150,padding:5,textTransform: "none"}}
                 variant="outlined"
