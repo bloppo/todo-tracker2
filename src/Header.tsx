@@ -7,7 +7,7 @@ const Header = () => {
 
     return (
         <div className = {"header"}>
-            <h1>To Do Tracker</h1>
+            <h2>To Do Tracker</h2>
                 <div className={"header-link"}>
                     <a href="https://github.com/bloppo/todo-tracker2" target={"github"}>GitHub</a>
                     {today}
