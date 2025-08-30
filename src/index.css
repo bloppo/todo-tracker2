@@ -1,4 +1,3 @@
-
 @import '@fontsource/roboto/300.css';
 @import '@fontsource/roboto/400.css';
 @import '@fontsource/roboto/500.css';
@@ -13,12 +12,12 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-html,body {
+html, body {
 
     font-family: system-ui, Roboto, Avenir, Helvetica, Arial, sans-serif;
 
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 
     font-size: 14px;
     line-height: 1.5;
@@ -26,53 +25,73 @@ html,body {
 
 }
 
-a{
-    color:blue;
+a {
+    color: blue;
 }
 
 a.active {
     font-weight: bold;
-    color:black;
+    color: black;
 }
-
-/*
-Button {
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-*/
 
 Button:hover {
- background-color: #777777;
+    background-color: #777777;
+}
+
+.myaccordion-header {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    padding: 5px;
+    background-color: #888;
+}
+
+.myaccordion-header > :first-child {
+    text-align: left;
+}
+
+.myaccordion-header > :nth-child(2) {
+    margin: 0 auto;
+}
+
+.myaccordion-body {
+    display: flex;
+    width: 300px;
+    padding: 5px;
+    text-align: center;
+    background-color: #aaa;
+}
+
+.myaccordion-rotated {
+    transform: rotate(180deg);
+    transition: transform 0.2s;
+}
+
+.myaccordion-show {
+    display: block;
+}
+
+.myaccordion-hide {
+    display: none;
 }
 
 .container {
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    min-height:100vh;
-    margin:10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 100vh;
+    margin: 10px;
 }
 
 .header {
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     background-color: rgb(161, 197, 230);
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.header-link{
+.header-link {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -81,36 +100,42 @@ Button:hover {
     padding: 10px;
 }
 
-.main{
-    display:flex;
-    flex-direction:row;
-    gap:10px;
+.main {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
-.sidebar{
-     width:200px;
-     min-height:75vh;
-     padding:10px;
-     background-color: rgb(201, 129, 21);
-     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+.sidebar {
+    width: 200px;
+    min-height: 75vh;
+    padding: 10px;
+    background-color: rgb(201, 129, 21);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 nav {
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 10px;
 }
 
 .content {
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width:100%;
+    width: 100%;
     padding: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     background-image: url('/public/beautiful-fall-nature-scenery.webp');
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
+    background-attachment: fixed;
 }
+
 .content::before {
     content: "";
     position: absolute;
@@ -119,54 +144,70 @@ nav {
     pointer-events: none;
     z-index: 0;
 }
-.what {
-    display:flex;
-    flex-direction:column;
-    flex:1;
-    gap:10px;
-    width:100%;
-    height:80vh;
-    background-color: rgba(255,165,0,0.3);
-    padding:20px
+
+.list-cards {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+    width: 100%;
+    height: 80vh;
+    background-color: rgba(255, 165, 0, 0.3);
+    padding: 20px
 }
 
-.add-item {
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    width:100%;
-    height:80vh;
-    background-color: rgba(255,165,0,0.3);
-    padding:20px
+.list-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add-todo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 80vh;
+    background-color: rgba(255, 165, 0, 0.3);
+    padding: 20px
 }
 
 .todo-cards {
-    display:flex;
-    flex-wrap:wrap;
-    gap:16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
     justify-content: flex-start;
 }
 
 .todo-card {
-    background: #ccc; /*var(--panel-color);*/
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    background: #d6ab6a; /*var(--panel-color);*/
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 16px;
     min-width: 220px;
 }
 
-
-.about {
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    width:100%;
-    height:80vh;
-    background-color: rgba(255,165,0,0.35);
+.button-group {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    width: 100%;
+    justify-content: center;
 }
 
-.footer{
+.about {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 80vh;
+    background-color: rgba(255, 165, 0, 0.35);
+}
+
+.footer {
     text-align: center;
     background-color: rgb(56, 95, 112);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
