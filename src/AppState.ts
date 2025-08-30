@@ -4,10 +4,10 @@ import {persist, createJSONStorage} from 'zustand/middleware';
 import {immer} from 'zustand/middleware/immer'
 
 import type {TodoDataType} from "./Types/TodoDataType.ts";
-import todoData from "../public/tododata.ts";
+import todoData from "./assets/tododata.ts";
 import {format, getDaysInMonth} from 'date-fns';
 
-todoData.forEach((item) => {
+todoData.forEach((item : TodoDataType) => {
     const dt = new Date()
     const m = dt.getMonth();
     const y = dt.getFullYear();

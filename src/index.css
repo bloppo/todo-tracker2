@@ -129,7 +129,7 @@ nav {
     width: 100%;
     padding: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    background-image: url('/public/beautiful-fall-nature-scenery.webp');
+    background-image: url('/src/assets/beautiful-fall-nature-scenery.webp');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
