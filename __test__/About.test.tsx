@@ -3,7 +3,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import About from "../About";
+import About from "../src/About";
 
 describe("About Component", () => {
     test("renders About page content", () => {
