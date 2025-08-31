@@ -195,6 +195,18 @@ nav {
     min-width: 220px;
 }
 
+.todo-not-found {
+    margin-top:20px;
+    margin-left:35%;
+    margin-right:35%;
+    width:30%;
+    border:1px solid black;
+    text-align:center;
+    padding:10px;
+    font-size:20pt;
+    background-color:#aaa;
+}
+
 .button-group {
     display: flex;
     gap: 8px;
@@ -246,5 +258,12 @@ nav {
 
     .about > p {
         width:300px;
+    }
+
+    .todo-not-found {
+        margin-left:10%;
+        margin-right:10%;
+        width:80%;
+        font-size:12pt;
     }
 }

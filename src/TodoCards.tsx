@@ -152,7 +152,7 @@ const TodoCards = (props: TodoCardsPropsType) => {
                         </div>
                     </div>
                 ))
-                : <div style={{marginTop: 20,textAlign:"center",width:"100%",padding:"10px", fontSize:"20pt", backgroundColor:"#aaa"}}>No todo's found</div>
+                : <div className={"todo-not-found"}>No todo's found</div>
             }
             <DeleteDialog openDialog={openDialog}
                           description={description}
