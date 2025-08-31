@@ -1,13 +1,7 @@
 import {NavLink, Outlet} from "react-router";
 import Header from "./Header.tsx";
 
-import useAppState from "./AppState.ts";
-
 function App() {
-
-    const count = useAppState((state) => state.count);
-    const incCount = useAppState((state) => state.inc);
-    const decCount = useAppState((state) => state.dec);
 
     return (
         <div className={"container"}>
@@ -16,11 +10,7 @@ function App() {
 
             <div className={"main"}>
                 <div className={"sidebar"}>
-                    <b>Sidebar</b>
                     <br/>
-                    <b>Count {count}</b>
-                    <input type="button" value={"Inc"} onClick={incCount}/>
-                    <input type="button" value={"Dec"} onClick={decCount}/>
                     <nav>
                         <NavLink to="/">Home</NavLink>
                         <NavLink to="/ListCards">List Todo's</NavLink>

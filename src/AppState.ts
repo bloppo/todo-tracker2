@@ -1,13 +1,13 @@
-//import type {StateCreator} from 'zustand';
 import {create} from 'zustand';
 import {persist, createJSONStorage} from 'zustand/middleware';
 import {immer} from 'zustand/middleware/immer'
 
-import type {TodoDataType} from "./Types/TodoDataType.ts";
+import type {ToDoDataType,AppStateType} from "./Types/DataTypes.ts";
+
 import todoData from "./assets/tododata.ts";
 import {format, getDaysInMonth} from 'date-fns';
 
-todoData.forEach((item : TodoDataType) => {
+todoData.forEach((item : ToDoDataType) => {
     const dt = new Date()
     const m = dt.getMonth();
     const y = dt.getFullYear();
@@ -17,19 +17,8 @@ todoData.forEach((item : TodoDataType) => {
     item.dueDate = format(date, "yyyy-MM-dd");
 })
 
-interface AppState {
-    count: number;
-    inc: () => void;
-    dec: () => void;
-    todoData: TodoDataType[];
-    removeTodo: (recno: number) => boolean;
-    completedTodo: (recno: number) => boolean;
-    addTodo: (item: TodoDataType) => void;
-    _isHydrated: boolean;
-    setHasHydrated: (val: boolean) => void;
-}
 
-const useAppState = create<AppState>()(
+const useAppState = create<AppStateType>()(
     persist(immer((set, get) => ({
             count: 7,
             inc: () => set((state) => ({count: state.count + 1})),
@@ -63,7 +52,7 @@ const useAppState = create<AppState>()(
 
             },
 
-            addTodo: (item: TodoDataType) => {
+            addTodo: (item: ToDoDataType) => {
                 console.log(get().count)
                 item.recno = get().count;
                 console.log(item);

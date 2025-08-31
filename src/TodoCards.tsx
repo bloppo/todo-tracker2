@@ -1,25 +1,14 @@
 import {format} from "date-fns/format";
 import {parseISO} from "date-fns";
 
-import type {TodoDataType} from "./Types/TodoDataType.ts";
+import type {TodoCardsPropsType, ToDoDataType} from "./Types/DataTypes.ts";
 import useAppState from "./AppState.ts";
 
 import {useState} from "react";
 import DeleteDialog from "./Dialogs/DeleteDialog.tsx";
-import dayjs from "dayjs";
 
-interface TodoCardsProps {
-    sortBy: string;
-    sortAsc: boolean;
-    filterByDescription: string;
-    filterByPosition: string;
-    filterByCompleted: string;
-    filterByDueDateRangeStart: dayjs.Dayjs | null;
-    filterByDueDateRangeEnd: dayjs.Dayjs | null;
-    todoData: TodoDataType[];
-}
 
-const TodoCards = (props: TodoCardsProps) => {
+const TodoCards = (props: TodoCardsPropsType) => {
 
     const [openDialog, setOpenDialog] = useState(false);
     const [selectedRecno, setSelectedRecno] = useState<number | null>(null);
@@ -59,7 +48,7 @@ const TodoCards = (props: TodoCardsProps) => {
         setSelectedRecno(null);
     }
 
-    const filterItem = (item : TodoDataType) => {
+    const filterItem = (item : ToDoDataType) => {
 
         let passed = true;
 
@@ -101,7 +90,7 @@ const TodoCards = (props: TodoCardsProps) => {
 
     }
 
-    const sortCmp = (a: TodoDataType, b: TodoDataType) => {
+    const sortCmp = (a: ToDoDataType, b: ToDoDataType) => {
         let retVal
         switch (props.sortBy) {
             case "description":

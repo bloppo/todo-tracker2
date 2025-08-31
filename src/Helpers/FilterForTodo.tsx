@@ -10,20 +10,9 @@ import {Controller, useForm} from "react-hook-form";
 
 import dayjs from 'dayjs';
 
-interface FilterByForTodoProps {
-    filterByDescription: string;
-    setFilterByDescription: (value: string) => void;
-    filterByPosition: string;
-    setFilterByPosition: (value: string) => void;
-    filterByCompleted: string;
-    setFilterByCompleted: (value: string) => void;
-    filterByDueDateRangeStart: dayjs.Dayjs | null;
-    setFilterByDueDateRangeStart: (value: dayjs.Dayjs | null) => void;
-    filterByDueDateRangeEnd: dayjs.Dayjs | null;
-    setFilterByDueDateRangeEnd: (value: dayjs.Dayjs | null) => void;
-}
+import type {FilterByForTodoPropsType} from "../Types/DataTypes.ts";
 
-const FilterForTodo = (props: FilterByForTodoProps) => {
+const FilterForTodo = (props: FilterByForTodoPropsType) => {
 
     const {formState: {errors}, control} = useForm({mode: 'onChange'});
 
@@ -115,7 +104,7 @@ const FilterForTodo = (props: FilterByForTodoProps) => {
                                         date => {
                                             onChange(date);
                                             if (date) {
-                                                const isoString = dayjs(date)//date.toISOString();
+                                                const isoString = dayjs(date)
                                                 props.setFilterByDueDateRangeStart(isoString);
                                             } else {
                                                 props.setFilterByDueDateRangeStart(null);
@@ -126,7 +115,7 @@ const FilterForTodo = (props: FilterByForTodoProps) => {
                                         textField: {
                                             variant: 'filled',
                                             error: !!errors.dueDateRangeStart,
-                                            helperText: errors.dueDate ? errors.dueDateRangeStart!.message : '',
+                                            helperText: errors.dueDateRangeStart ? errors.dueDateRangeStart!.message : '',
                                             sx: {backgroundColor: '#ccc', width: 225}
                                         } as Partial<TextFieldProps>
                                     }}

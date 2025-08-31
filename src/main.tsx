@@ -8,6 +8,7 @@ import ListToDoCards from './ListToDoCards.tsx'
 
 import {BrowserRouter, Route, Routes} from 'react-router'
 import AddTodo from './AddTodo.tsx';
+import Home from './Home.tsx';
 
 
 createRoot(document.getElementById('root')!).render(
@@ -16,7 +17,7 @@ createRoot(document.getElementById('root')!).render(
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App/>}>
-                    <Route index element={<h1></h1>}/>
+                    <Route index element={<Home />}/>
                     <Route path="/about" element={<About/>}/>
                     <Route path="/ListCards" element={<ListToDoCards/>}/>
                     <Route path="/addTodo" element={<AddTodo/>}/>

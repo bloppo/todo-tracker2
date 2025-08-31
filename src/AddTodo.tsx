@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {useForm, Controller, type FieldValues} from "react-hook-form";
-import {TextField, Button, Box, Stack, Snackbar, Alert, type TextFieldProps} from '@mui/material';
-import {DatePicker, LocalizationProvider} from '@mui/x-date-pickers';
-import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
+import {useForm, type FieldValues} from "react-hook-form";
+import {TextField, Button, Box, Stack, Snackbar, Alert} from '@mui/material';
+import {LocalizationProvider} from '@mui/x-date-pickers';
 
-//import dayjs, { Dayjs } from 'dayjs';
+import MyDatePickerForForm from './Helpers/MyDatePickerForForm.tsx';
+
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 
 import useAppState from "./AppState.ts";
 import {isAfter, parseISO} from "date-fns";
@@ -85,30 +86,20 @@ const AddTodo = () => {
                             variant="filled"
                         />
 
-                        <Controller
+                        <MyDatePickerForForm
                             name={"dueDate"}
-                            defaultValue={null}
+                            label="Due Date"
+                            value={null}
                             control={control}
                             rules={{
                                 required: 'Due Date is required.',
                                 validate: value => goodDate(value) || 'Due Date must be after 08-15-25'
                             }}
-                            render={({field: {onChange, value}}) => (
-                                <DatePicker
-                                    label="Due Date"
-                                    value={value}
-                                    onChange={onChange}
-                                    slotProps={{
-                                        textField: {
-                                            variant: 'filled',
-                                            error: !!errors.dueDate,
-                                            helperText: errors.dueDate ? errors.dueDate.message : '',
-                                            sx: {backgroundColor: 'white', width: 225}
-                                        } as Partial<TextFieldProps>
-                                    }}
-                                />
-                            )}
+                            //@ts-expect-error
+                            errors={errors}
+                            sx={{backgroundColor: 'white', width: 225}}
                         />
+
                         <Button
                             sx={{
                                 width: 100,

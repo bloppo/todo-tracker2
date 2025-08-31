@@ -1,18 +1,8 @@
-import {useState, type CSSProperties, type ReactNode} from "react";
+import {useState} from "react";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import type {MyAccordionPropsType} from "../Types/DataTypes.ts";
 
-interface MyAccordionProps {
-    id: string;
-    title: string;
-    style: CSSProperties & {
-        width: number;
-        bgHeaderColor: string;
-        bgBodyColor: string;
-    };
-    children: ReactNode;
-}
-
-const MyAccordion = (props: MyAccordionProps) => {
+const MyAccordion = (props: MyAccordionPropsType) => {
 
     const [btnValue, setBtnValue] = useState("+")
 

@@ -5,16 +5,10 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import {Checkbox} from "@mui/material";
 import MyAccordion from "./MyAccordion.tsx";
+import type {SortByForTodoPropsType} from "../Types/DataTypes.ts";
 
 
-interface SortByForTodoProps {
-    sortBy: string;
-    setSortBy: (value: string) => void;
-    sortAsc: boolean;
-    setSortAsc: (value: boolean) => void;
-}
-
-const SortByForTodo = ({sortBy, setSortBy, sortAsc, setSortAsc}: SortByForTodoProps) => {
+const SortByForTodo = (props: SortByForTodoPropsType) => {
 
     return (
         <MyAccordion
@@ -43,8 +37,8 @@ const SortByForTodo = ({sortBy, setSortBy, sortAsc, setSortAsc}: SortByForTodoPr
                     sx={{backgroundColor: '#aaa', padding: 0, borderRadius: 1, marginTop: 0}}
                     aria-labelledby="radio-buttons-group-for-sort"
                     name="sortby"
-                    value={sortBy}
-                    onChange={e => setSortBy(e.target.value)}
+                    value={props.sortBy}
+                    onChange={e => props.setSortBy(e.target.value)}
                 >
                     <FormControlLabel
                         sx={{
@@ -71,8 +65,8 @@ const SortByForTodo = ({sortBy, setSortBy, sortAsc, setSortAsc}: SortByForTodoPr
                     sx={{mt: 0, fontSize: '6pt'}}
                     control={
                         <Checkbox
-                            checked={sortAsc}
-                            onChange={e => setSortAsc(e.target.checked)}
+                            checked={props.sortAsc}
+                            onChange={e => props.setSortAsc(e.target.checked)}
                             slotProps={{
                                 input: {'aria-label': 'Sort ascending'}
                             }}
