@@ -1,20 +1,21 @@
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import MyAccordion from './MyAccordion';
-import {Radio, TextField, type TextFieldProps} from "@mui/material";
+import {Radio, TextField} from "@mui/material";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
-import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
-import {Controller, useForm} from "react-hook-form";
+import {LocalizationProvider} from "@mui/x-date-pickers";
+import {type FieldValues, useForm} from "react-hook-form";
 
-import dayjs from 'dayjs';
+//import dayjs from 'dayjs';
 
-import type {FilterByForTodoPropsType} from "../Types/DataTypes.ts";
+import type {FilterByForTodoPropsType, TodoFilterForm} from "../Types/DataTypes.ts";
+import MyDatePicker from "./MyDatePicker.tsx";
 
 const FilterForTodo = (props: FilterByForTodoPropsType) => {
 
-    const {formState: {errors}, control} = useForm({mode: 'onChange'});
+    const {formState: {errors}, control, clearErrors} = useForm<FieldValues,TodoFilterForm>({mode: 'onChange'});
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -81,89 +82,56 @@ const FilterForTodo = (props: FilterByForTodoPropsType) => {
                             </div>
                         </RadioGroup>
                         <b>Due Date Range</b>
-                        <Controller
+                        <MyDatePicker
                             name={"dueDateRangeStart"}
-                            defaultValue={null}
+                            label={"Due Date Start"}
+                            value={props.filterByDueDateRangeStart}
+                            filterByDate={props.filterByDueDateRangeStart}
+                            setFilterByDate={props.setFilterByDueDateRangeStart}
                             control={control}
-                            rules={{
-                                validate: value => {
-                                    const end = control._formValues.dueDateRangeEnd
-                                    if (value && end) {
-                                        const startDate = value.toDate();
-                                        const endDate = end.toDate();
-                                        return endDate > startDate || 'Start date must be before end date';
-                                    }
-                                    return true
-                                }
-                            }}
-                            render={({field: {onChange}}) => (
-                                <DatePicker
-                                    label="Due Date Start"
-                                    value={props.filterByDueDateRangeStart}
-                                    onChange={
-                                        date => {
-                                            onChange(date);
-                                            if (date) {
-                                                const isoString = dayjs(date)
-                                                props.setFilterByDueDateRangeStart(isoString);
-                                            } else {
-                                                props.setFilterByDueDateRangeStart(null);
-                                            }
+                            errors={errors}
+                            sx={{backgroundColor: '#ccc', width: 225}}
+                            rules={
+                                {
+                                    validate: value => {
+                                        clearErrors();
+                                        const end = props.filterByDueDateRangeEnd;
+                                        if (value && end) {
+                                            const endDate = end.toDate();
+                                            const startDate = value.toDate();
+                                            return startDate <= endDate || 'Start date must be before end date';
                                         }
+                                        return true
                                     }
-                                    slotProps={{
-                                        textField: {
-                                            variant: 'filled',
-                                            error: !!errors.dueDateRangeStart,
-                                            helperText: errors.dueDateRangeStart ? errors.dueDateRangeStart!.message : '',
-                                            sx: {backgroundColor: '#ccc', width: 225}
-                                        } as Partial<TextFieldProps>
-                                    }}
-                                />
-                            )}
-                        />
-                        <Controller
+                                }
+                            }
+                        >
+                        </MyDatePicker>
+                        <MyDatePicker
                             name={"dueDateRangeEnd"}
-                            defaultValue={null}
+                            label={"Due Date End"}
+                            value={props.filterByDueDateRangeEnd}
+                            filterByDate={props.filterByDueDateRangeEnd}
+                            setFilterByDate={props.setFilterByDueDateRangeEnd}
                             control={control}
-                            rules={{
-                                validate: value => {
-                                    const start = control._formValues.dueDateRangeStart
-                                    if (value && start) {
-                                        const startDate = start.toDate();
-                                        const endDate = value.toDate();
-                                        return endDate > startDate || 'End date must be after start date';
-                                    }
-                                    return true
-                                }
-                            }}
-                            render={({field: {onChange}}) => (
-                                <DatePicker
-                                    label="Due Date End"
-                                    value={props.filterByDueDateRangeEnd}
-                                    onChange={
-                                        date => {
-                                            onChange(date);
-                                            if (date) {
-                                                const isoString = dayjs(date)//date.toISOString();
-                                                props.setFilterByDueDateRangeEnd(isoString);
-                                            } else {
-                                                props.setFilterByDueDateRangeEnd(null);
-                                            }
+                            errors={errors}
+                            sx={{backgroundColor: '#ccc', width: 225}}
+                            rules={
+                                {
+                                    validate: value => {
+                                        clearErrors()
+                                        const start = props.filterByDueDateRangeStart;
+                                        if (value && start) {
+                                            const startDate = start.toDate();
+                                            const endDate = value.toDate();
+                                            return endDate >= startDate || 'End date must be after Start date';
                                         }
+                                        return true
                                     }
-
-                                    slotProps={{
-                                        textField: {
-                                            variant: 'filled',
-                                            error: !!errors.dueDateRangeEnd,
-                                            helperText: errors.dueDateRangeEnd ? errors.dueDateRangeEnd.message : '',
-                                            sx: {backgroundColor: '#ccc', width: 225}
-                                        } as Partial<TextFieldProps>
-                                    }}
-                                />
-                            )}
-                        />
+                                }
+                            }
+                        >
+                        </MyDatePicker>
                     </div>
                 </FormControl>
             </MyAccordion>

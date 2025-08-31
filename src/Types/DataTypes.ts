@@ -44,6 +44,14 @@ export interface TodoCardsPropsType {
     todoData: ToDoDataType[];
 }
 
+export interface TodoFilterForm {
+    description: string;
+    position: string;
+    completed: string;
+    dueDateRangeStart: dayjs.Dayjs | null;
+    dueDateRangeEnd: dayjs.Dayjs | null;
+}
+
 export interface FilterByForTodoPropsType {
     filterByDescription: string;
     setFilterByDescription: (value: string) => void;
