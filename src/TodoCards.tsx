@@ -131,15 +131,14 @@ const TodoCards = (props: TodoCardsPropsType) => {
         }
     }
 
-    const cnt = props.todoData.filter(item => filterItem(item)).length;
+    const todos = props.todoData.filter(item => filterItem(item));
 
     return (
 
         <div className={"todo-cards"}>
             {
-                cnt > 0 ? props.todoData.filter(item => filterItem(item))
-                                        .sort((a, b) => sortCmp(a, b))
-                                        .map(item => (
+                todos.length > 0 ? todos.sort((a, b) => sortCmp(a, b))
+                                         .map(item => (
                     <div key={item.recno} className={"todo-card"}>
                         <b>{item.description}</b>
                         <div>Position: {item.position}</div>
