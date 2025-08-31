@@ -21,6 +21,6 @@
                 If you have any questions or feedback, please feel free to email me at 
                 <a href="mailto:parbanas@gmail.com">parbanas@gmail.com</a>
 
-                You can find the app at <a href="https://todo-tracker2.vercel.app/ListCards">Todo Trakcer</a>
+                You can find the app at <a href="https://todo-tracker2.vercel.app/ListCards">Todo Tracker</a>
 
                 Thank you for visiting my portfolio.
