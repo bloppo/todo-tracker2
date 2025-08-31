@@ -37,6 +37,7 @@ const MyDatePicker = (props:DatePickerPropsType) => {
             const isoString : dayjs.Dayjs = dayjs(date.toDate());
             setFilterByDate(isoString);
         } else {
+            //@ts-expect-error Type mismatch
             setFilterByDate(null);
         }
     }
