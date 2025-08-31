@@ -131,11 +131,15 @@ const TodoCards = (props: TodoCardsPropsType) => {
         }
     }
 
+    const cnt = props.todoData.filter(item => filterItem(item)).length;
+
     return (
+
         <div className={"todo-cards"}>
-            {props.todoData.filter(item => filterItem(item))
-                .sort((a, b) => sortCmp(a, b))
-                .map(item => (
+            {
+                cnt > 0 ? props.todoData.filter(item => filterItem(item))
+                                        .sort((a, b) => sortCmp(a, b))
+                                        .map(item => (
                     <div key={item.recno} className={"todo-card"}>
                         <b>{item.description}</b>
                         <div>Position: {item.position}</div>
@@ -148,7 +152,9 @@ const TodoCards = (props: TodoCardsPropsType) => {
                             <button style={{width: 75}} onClick={completedTodoLocal(item.recno)}>Complete</button>
                         </div>
                     </div>
-                ))}
+                ))
+                : <div style={{marginTop: 20,textAlign:"center",width:"100%",padding:"10px", fontSize:"20pt", backgroundColor:"#aaa"}}>No todo's found</div>
+            }
             <DeleteDialog openDialog={openDialog}
                           description={description}
                           handleCancel={handleCancel}
