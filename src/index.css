@@ -123,7 +123,7 @@ nav {
 
 .home {
     width: 100%;
-    min-height: 80vh;
+    min-height: 40vh;
 }
 
 .page-not-found {
@@ -133,7 +133,7 @@ nav {
     justify-content: center;
     gap: 10px;
     width: 100%;
-    height: 80vh;
+    min-height: 40vh;
     background-color: rgba(255, 165, 0, 0.3);
     padding: 20px
 }
