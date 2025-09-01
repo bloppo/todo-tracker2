@@ -4,7 +4,7 @@ const todoData = [
     {
         recno: 1,
         description: "Buy groceries",
-        position:"Greeter",
+        position:"Master Greeter",
         completed: false,
         dueDate: "2025-06-10"
     },
