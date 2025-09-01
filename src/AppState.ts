@@ -24,6 +24,10 @@ const useAppState = create<AppStateType>()(
             inc: () => set((state) => ({count: state.count + 1})),
             dec: () => set((state) => ({count: state.count - 1})),
 
+            isAuthenticated: false,
+
+            setIsAuthenticated: (val) => set({isAuthenticated: val}),
+
             todoData: todoData,
 
             removeTodo: (recno: number) => {

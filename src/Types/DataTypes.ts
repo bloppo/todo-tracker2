@@ -14,6 +14,8 @@ export interface AppStateType {
     count: number;
     inc: () => void;
     dec: () => void;
+    isAuthenticated: boolean;
+    setIsAuthenticated: (val: boolean) => void;
     todoData: ToDoDataType[];
     removeTodo: (recno: number) => boolean;
     completedTodo: (recno: number) => boolean;

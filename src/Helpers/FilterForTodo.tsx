@@ -62,24 +62,21 @@ const FilterForTodo = (props: FilterByForTodoPropsType) => {
                             onChange={e => props.setFilterByPosition(e.target.value)}
                         />
                         <RadioGroup
-                            sx={{backgroundColor: '#aaa', padding: 0, borderRadius: 1, marginTop: 0}}
+                            sx={{backgroundColor: '#aaa',
+                                 padding: "10px",
+                                 gap:"0px",
+                                 border: "1px solid #888",
+                                 borderRadius: 1,
+                                 marginTop: 0}}
                             aria-labelledby="radio-buttons-group-for-filter"
                             name="filter-by-completed"
                             value={props.filterByCompleted}
                             onChange={e => props.setFilterByCompleted(e.target.value)}
                         >
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "2px",
-                                padding: "6px",
-                                border: "1px solid black"
-                            }}>
-                                <b>Status</b>
-                                <FormControlLabel value="all" control={<Radio size="small"/>} label="All"/>
-                                <FormControlLabel value="completed" control={<Radio size="small"/>} label="Completed"/>
-                                <FormControlLabel value="pending" control={<Radio size="small"/>} label="Pending"/>
-                            </div>
+                            <b>Status</b>
+                            <FormControlLabel value="all" control={<Radio size="small"/>} label="All"/>
+                            <FormControlLabel value="completed" control={<Radio size="small"/>} label="Completed"/>
+                            <FormControlLabel value="pending" control={<Radio size="small"/>} label="Pending"/>
                         </RadioGroup>
                         <b>Due Date Range</b>
                         <MyDatePicker
