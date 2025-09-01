@@ -208,7 +208,7 @@ nav {
 .add-todo {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     gap: 10px;
     width: 100%;
@@ -284,6 +284,8 @@ nav {
     .main {
         flex-direction: column; /* Stack sidebar and content vertically */
         align-items: center; /* Center items horizontally */
+        max-width:100vw;
+        box-sizing: border-box;
     }
 
     .sidebar {
@@ -293,8 +295,9 @@ nav {
 
     .content {
         width: 100%;
-        max-width:360px;
+        max-width:320px;
         padding: 4px;
+        box-sizing: border-box;
     }
 
     .about > p {
