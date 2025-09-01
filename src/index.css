@@ -123,7 +123,7 @@ nav {
 
 .home {
     width: 100%;
-    height: 80vh;
+    min-height: 80vh;
 }
 
 .page-not-found {
@@ -284,6 +284,13 @@ nav {
     .header {
         width: 100%;
         /*max-width:320px;*/
+        padding: 4px;
+        box-sizing: border-box;
+    }
+
+    .home{
+        width: 100%;
+        min-height:20vh;
         padding: 4px;
         box-sizing: border-box;
     }
