@@ -41,7 +41,7 @@ function App() {
                         </> : null}
 
                     <button onClick={() => clearStorage()} style={{marginTop:"20px"}}>Reset Storage</button>
-                    <div style={{fontSize:"12pt", padding:"5px"}}>The list of Todo's is reset to the original list.</div>
+                    <div className={"reset-storage-message"}>The list of Todo's is reset to the original list.</div>
                 </div>
                 <div className={"content"}>
                     <Outlet/>

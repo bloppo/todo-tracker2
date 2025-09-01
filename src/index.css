@@ -108,7 +108,7 @@ Button:hover {
 
 .sidebar {
     min-width: 30vh;
-    min-height: 25vh;
+    min-height: 35vh;
     flex:1;
     padding: 10px;
     background-color: rgb(201, 129, 21);
@@ -123,8 +123,8 @@ nav {
 }
 
 .home {
-    width: 100%;
-    min-height: 40vh;
+    width: 50%;
+    min-height: 80vh;
 }
 
 .page-not-found {
@@ -281,6 +281,20 @@ nav {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+.reset-storage-message {
+    font-size:12pt;
+    padding:5px;
+}
+
+.add-todo-button {
+    background-color: green;
+    color: white;
+    width: 150px;
+    padding: 5px;
+    margin: 5px;
+    text-transform:none;
+}
+
 @media (max-width: 400px) {
     .header {
         width: 100%;
@@ -291,7 +305,7 @@ nav {
 
     .home{
         width: 100%;
-        min-height:20vh;
+        min-height:30vh;
         padding: 4px;
         box-sizing: border-box;
     }

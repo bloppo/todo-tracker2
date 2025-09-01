@@ -35,9 +35,7 @@ const ListToDoCards = () => {
         <div className={"list-cards"}>
             <Stack>
 
-                <div style={{display: "flex", flexDirection: "column", width: "100%", alignItems: "center"}}>
-                    <h1>Todo's</h1>
-                </div>
+                <h1>Todo's</h1>
 
                 <Stack direction={"column"} spacing={1}>
                     <h2>Options</h2>
@@ -66,14 +64,7 @@ const ListToDoCards = () => {
 
                 </Stack>
 
-                <Button style={{
-                    backgroundColor: 'green',
-                    color: 'white',
-                    width: 150,
-                    padding: 5,
-                    margin: 5,
-                    textTransform: "none"
-                }}
+                <Button className={"add-todo-button"}
                         variant="outlined"
                         onClick={() => {
                             navigate("/addTodo")

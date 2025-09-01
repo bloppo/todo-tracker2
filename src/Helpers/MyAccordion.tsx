@@ -20,12 +20,14 @@ const MyAccordion = (props: MyAccordionPropsType) => {
 
     }
 
+    //, top: props.style.top, left: props.style.left,
+//, top: props.style.top, left: props.style.left,
+
     return (
         <div style={{margin: '10px'}}>
             <div className={"myaccordion-header"}
                  style={{
-                     width: props.style.width, top: props.style.top, left: props.style.left,
-                     backgroundColor: props.style.bgHeaderColor
+                     width: props.style.width,backgroundColor: props.style.bgHeaderColor
                  }}>
                 <div>
                     <ExpandMoreIcon
@@ -36,8 +38,7 @@ const MyAccordion = (props: MyAccordionPropsType) => {
             </div>
             <div id={props.id} className={"myaccordion-body myaccordion-hide"}
                  style={{
-                     width: props.style.width, top: props.style.top, left: props.style.left,
-                     backgroundColor: props.style.bgBodyColor
+                     width: props.style.width,backgroundColor: props.style.bgBodyColor
                  }}>
                 {props.children}
             </div>
