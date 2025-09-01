@@ -35,10 +35,13 @@ function App() {
                                 <NavLink to="/addTodo">Add Todo</NavLink>
                                 <NavLink to="/about">About</NavLink>
                             </nav>
-                            <button onClick={() => logout()} style={{marginTop:"20px"}}>Log Out</button>
+                            <div>
+                                <button onClick={() => logout()} style={{marginTop:"20px"}}>Log Out</button>
+                            </div>
                         </> : null}
 
-                    <button onClick={() => clearStorage()} style={{marginTop:"50px"}}>Reset Storage</button>
+                    <button onClick={() => clearStorage()} style={{marginTop:"20px"}}>Reset Storage</button>
+                    <div style={{fontSize:"8pt", padding:"5px"}}>The list of Todo's is reset to the original list.</div>
                 </div>
                 <div className={"content"}>
                     <Outlet/>
