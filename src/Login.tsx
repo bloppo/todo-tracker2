@@ -62,7 +62,7 @@ const Login = () => {
                             Submit
                         </Button>
 
-                        <div style={{backgroundColor:"#aaa", fontSize:"8pt", padding:"5px", marginTop:"50px"}}>
+                        <div style={{backgroundColor:"#aaa", fontSize:"12pt", padding:"5px", marginTop:"50px"}}>
                             Click Submit to log in. No username or password is required.
                         </div>
                     </Stack>

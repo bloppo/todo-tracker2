@@ -108,7 +108,8 @@ Button:hover {
 
 .sidebar {
     width: 200px;
-    min-height: 75vh;
+    min-height: 25vh;
+    flex:1;
     padding: 10px;
     background-color: rgb(201, 129, 21);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
@@ -311,7 +312,7 @@ nav {
 
     .sidebar {
         width: 100%; /* Sidebar takes full width */
-        min-height:250px;
+        min-height:20vh;
         /*max-height:300px;*/
         padding: 4px;
         box-sizing: border-box;
