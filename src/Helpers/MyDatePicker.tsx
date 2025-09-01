@@ -33,6 +33,7 @@ return (
         rules={props.rules}
         render={({field: {onChange}}) => (
             <DatePicker
+                data-testid="my-datepicker"
                 label={props.label}
                 sx={props.sx}
                 value={props.value}
@@ -53,7 +54,10 @@ return (
                         error: !!props.errors[props.name],
                         //@ts-expect-error Type issue
                         helperText: props.errors[props.name] ? props.errors[props.name]['message'] : '',
-                        sx: props.sx
+                        sx: props.sx,
+                        FormHelperTextProps: {
+                            'data-testid': 'datepicker-helper-text'
+                        }
                     } as Partial<TextFieldProps>
                 }}
             />
