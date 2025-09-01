@@ -10,11 +10,13 @@ import {Stack} from "@mui/material";
 
 import dayjs from 'dayjs';
 import {startOfMonth} from 'date-fns';
+import {endOfMonth} from 'date-fns/endOfMonth';
 
 const ListToDoCards = () => {
 
     const date = new Date(); // or any Date object
     const firstDay = startOfMonth(date);
+    const lastDay = endOfMonth(date);
 
     const [sortBy, setSortBy] = useState('description');
     const [sortAsc, setSortAsc] = useState(true);
@@ -23,7 +25,7 @@ const ListToDoCards = () => {
     const [filterByPosition, setFilterByPosition] = useState('');
     const [filterByCompleted, setFilterByCompleted] = useState('all');
     const [filterByDueDateRangeStart, setFilterByDueDateRangeStart] = useState<dayjs.Dayjs | null>(dayjs(firstDay));
-    const [filterByDueDateRangeEnd, setFilterByDueDateRangeEnd] = useState<dayjs.Dayjs | null>(dayjs(Date.now()));
+    const [filterByDueDateRangeEnd, setFilterByDueDateRangeEnd] = useState<dayjs.Dayjs | null>(dayjs(lastDay));
 
     const navigate = useNavigate();
 
