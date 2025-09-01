@@ -145,7 +145,7 @@ nav {
     justify-content: flex-start;
     gap: 10px;
     width: 100%;
-    height: 80vh;
+    min-height: 80vh;
     background-color: rgba(255, 165, 0, 0.3);
     padding: 20px
 }
@@ -283,14 +283,14 @@ nav {
 @media (max-width: 400px) {
     .header {
         width: 100%;
-        max-width:320px;
+        /*max-width:320px;*/
         padding: 4px;
         box-sizing: border-box;
     }
 
     .footer{
         width: 100%;
-        max-width:320px;
+        /*max-width:320px;*/
         padding: 4px;
         box-sizing: border-box;
     }
@@ -304,18 +304,21 @@ nav {
 
     .sidebar {
         width: 100%; /* Sidebar takes full width */
-        min-height: auto; /* Adjust height */
-        max-width:320px;
+        min-height:250px;
+        /*max-height:300px;*/
         padding: 4px;
         box-sizing: border-box;
+        overflow-y:auto;
 
     }
 
     .content {
         width: 100%;
-        max-width:320px;
+        /*max-width:320px;*/
+        min-height:100px;
         padding: 4px;
         box-sizing: border-box;
+        background-image: none;
     }
 
     .about > p {
