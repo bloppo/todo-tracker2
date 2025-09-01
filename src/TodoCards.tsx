@@ -145,10 +145,10 @@ const TodoCards = (props: TodoCardsPropsType) => {
                         <div>Status: {item.completed ? "Done" : "Pending"}</div>
                         <div>Due: {formatDate(item.dueDate)}</div>
                         <div className={"button-group"}>
-                            <button style={{width: 75}}
+                            <button className={"todo-delete"}
                                     onClick={handleDeleteClick(item.recno, item.description)}>Delete
                             </button>
-                            <button style={{width: 75}} onClick={completedTodoLocal(item.recno)}>Complete</button>
+                            <button className={"todo-complete"} onClick={completedTodoLocal(item.recno)}>Complete</button>
                         </div>
                     </div>
                 ))
