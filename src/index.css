@@ -281,6 +281,20 @@ nav {
 }
 
 @media (max-width: 400px) {
+    .header {
+        width: 100%;
+        max-width:320px;
+        padding: 4px;
+        box-sizing: border-box;
+    }
+
+    .footer{
+        width: 100%;
+        max-width:320px;
+        padding: 4px;
+        box-sizing: border-box;
+    }
+
     .main {
         flex-direction: column; /* Stack sidebar and content vertically */
         align-items: center; /* Center items horizontally */
@@ -291,6 +305,10 @@ nav {
     .sidebar {
         width: 100%; /* Sidebar takes full width */
         min-height: auto; /* Adjust height */
+        max-width:320px;
+        padding: 4px;
+        box-sizing: border-box;
+
     }
 
     .content {
