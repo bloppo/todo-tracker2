@@ -39,10 +39,10 @@ const FilterForTodo = (props: FilterByForTodoPropsType) => {
                     >
                         <b>Filter By</b>
                     </FormLabel>
-                    <div style={{fontSize: "8pt", width: "100%", textAlign: "left"}}>
+                    <div className={"filter-message"}>
                         <p>Description and Position can take a regular expresssion to filter on.</p>
                     </div>
-                    <div style={{display: "flex", flexDirection: "column", gap: "5px"}}>
+                    <div className={"filter-container"}>
                         <TextField
                             id="description"
                             label="Description"

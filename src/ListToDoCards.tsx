@@ -64,7 +64,13 @@ const ListToDoCards = () => {
 
                 </Stack>
 
-                <Button className={"add-todo-button"}
+                <Button style={{backgroundColor:"green",
+                                color:"white",
+                                width:"150px",
+                                padding:"5px",
+                                margin:"5px",
+                                textTransform:"none"
+                }}
                         variant="outlined"
                         onClick={() => {
                             navigate("/addTodo")

@@ -286,13 +286,23 @@ nav {
     padding:5px;
 }
 
-.add-todo-button {
-    background-color: green;
-    color: white;
-    width: 150px;
-    padding: 5px;
-    margin: 5px;
-    text-transform:none;
+.login-message{
+    background-color:#aaa;
+    font-size:12pt;
+    padding:5px;
+    margin-top:50px;
+}
+
+.filter-message {
+    font-size:8pt;
+    width:100%;
+    text-align:left;
+}
+
+.filter-container {
+    display:flex;
+    flex-direction:column;
+    gap:5px;
 }
 
 @media (max-width: 400px) {
