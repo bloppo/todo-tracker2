@@ -14,7 +14,7 @@ const Login = () => {
 
     const login = () => {
         setIsAuthenticated(true)
-        navigate("/")
+        navigate("/ListCards")
     }
     const onSubmit = (data: FieldValues) => {
         login();
