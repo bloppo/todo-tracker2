@@ -107,7 +107,7 @@ Button:hover {
 }
 
 .sidebar {
-    width: 200px;
+    min-width: 30vh;
     min-height: 25vh;
     flex:1;
     padding: 10px;
@@ -316,8 +316,6 @@ nav {
         /*max-height:300px;*/
         padding: 4px;
         box-sizing: border-box;
-        overflow-y:auto;
-
     }
 
     .content {
