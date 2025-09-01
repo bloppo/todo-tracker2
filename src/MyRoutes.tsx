@@ -6,6 +6,7 @@ import ProtectedRoute from "./Helpers/ProtectedRoute.tsx";
 import About from "./About.tsx";
 import ListToDoCards from "./ListToDoCards.tsx";
 import AddTodo from "./AddTodo.tsx";
+import PageNotFound from "./PageNotFound.tsx";
 
 import useAppState from "./AppState.ts";
 
@@ -23,7 +24,7 @@ const MyRoutes = () => {
                     <Route path="/ListCards" element={<ListToDoCards/>}/>
                     <Route path="/addTodo" element={<AddTodo/>}/>
                 </Route>
-                <Route path="*" element={<h1>404</h1>}/>
+                <Route path="*" element={<PageNotFound/>}/>
             </Route>
         </Routes>
     );
