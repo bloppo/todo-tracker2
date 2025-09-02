@@ -1,18 +1,19 @@
 import React, {useState} from 'react';
 import {useForm, type FieldValues} from "react-hook-form";
-import {TextField, Button, Box, Stack, Snackbar, Alert} from '@mui/material';
+import {TextField, Button, Box, Stack, Dialog, Alert} from '@mui/material';
 import {LocalizationProvider} from '@mui/x-date-pickers';
+
+import {Dayjs} from 'dayjs';
 
 import MyDatePickerForForm from './Helpers/MyDatePickerForForm.tsx';
 
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 
 import useAppState from "./AppState.ts";
-import {isAfter, parseISO} from "date-fns";
 
 const AddTodo = () => {
 
-    const {register, handleSubmit, reset, formState: {errors}, control} = useForm();
+    const {register, handleSubmit, formState: {errors},reset, control} = useForm();
 
     const addTodo = useAppState((state) => state.addTodo);
 
@@ -38,28 +39,25 @@ const AddTodo = () => {
         )
     };
 
-    const handleClose = (_event?: React.SyntheticEvent | Event, reason?: string) => {
-        if (reason === 'clickaway') return;
-        setOpen(false);
-    };
-
-    const goodDate = (value: Date) => {
-        //const date1 = parseISO(value);
-        const date2 = parseISO("2025-08-15");
-        return isAfter(value, date2);
-    }
-
-    // Style override to target anchor class
-    const mySnackbarStyles = {
-        '&.MuiSnackbar-root': {
-            top: '250px',
-            zIndex: 1400
-        },
-        '&.MuiSnackbar-anchorOriginTopRight': {
-            top: '250px',
-            zIndex: 1400
+    // Auto-close Dialog after 3 seconds
+    React.useEffect(() => {
+        if (open) {
+            const timer = setTimeout(() => setOpen(false), 3000);
+            return () => clearTimeout(timer);
         }
-    };
+    }, [open]);
+
+    // Robust goodDate using Dayjs
+    const goodDate = (value: Dayjs | null) => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Set to start of today
+        if (value !== null) {
+            const selectedDate = value.toDate();
+            selectedDate.setHours(0, 0, 0, 0); // Set to start of selected date
+            return selectedDate > today; // Accept dates on today or after
+        }
+        return false;
+    }
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -93,7 +91,7 @@ const AddTodo = () => {
                             control={control}
                             rules={{
                                 required: 'Due Date is required.',
-                                validate: value => goodDate(value) || 'Due Date must be after 08-15-25'
+                                validate: value => goodDate(value) || 'Due Date must be before or on today'
                             }}
                             //@ts-expect-error Type issue
                             errors={errors}
@@ -116,15 +114,46 @@ const AddTodo = () => {
                         </Button>
                     </Stack>
                 </form>
-                <Snackbar open={open}
-                          autoHideDuration={3000}
-                          onClose={handleClose}
-                          anchorOrigin={{vertical: 'top', horizontal: 'center'}}
-                          sx={{...mySnackbarStyles}}>
-                    <Alert onClose={handleClose}
-                           severity="success"> Todo added successfully!
+                <Dialog open={open}
+                            hideBackdrop
+                            disableScrollLock
+                            slotProps = {{
+                                paper: {
+                                    sx: {
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow: 3,
+                                        borderRadius: 2,
+                                        p: 0,
+                                        minWidth: 0,
+                                        maxWidth: 'none',
+                                        background: 'none',
+                                    }
+                                }
+                        }}
+                        sx={{
+                            '& .MuiDialog-paper': {
+                                position: 'fixed',
+                                top: '50%',
+                                left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                m: 0,
+                            }
+                        }}
+                >
+                    <Alert severity="success"
+                           sx={{fontSize: '1rem',
+                                px: 3,
+                                py: 2,
+                               backgroundColor: 'lightgrey',
+                               border: '2px solid green',
+                               boxShadow: 3,
+                               borderRadius: 2,
+                               }}
+                           > Todo added successfully!
                     </Alert>
-                </Snackbar>
+                </Dialog>
             </Box>
         </LocalizationProvider>
     );
