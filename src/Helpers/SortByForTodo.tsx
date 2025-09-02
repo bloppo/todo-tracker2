@@ -1,11 +1,10 @@
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import {Checkbox} from "@mui/material";
 import MyAccordion from "./MyAccordion.tsx";
 import type {SortByForTodoPropsType} from "../Types/DataTypes.ts";
+import FilterRadioGroup from "./InputHelpers/FilterRadioGroup.tsx";
 
 const SortByForTodo = (props: SortByForTodoPropsType) => {
 
@@ -32,34 +31,18 @@ const SortByForTodo = (props: SortByForTodoPropsType) => {
                 >
                     <b>Sort By</b>
                 </FormLabel>
-                <RadioGroup
-                    sx={{backgroundColor: '#aaa', padding: 0, borderRadius: 1, marginTop: 0}}
-                    aria-labelledby="radio-buttons-group-for-sort"
-                    name="sortby"
+                <FilterRadioGroup
                     value={props.sortBy}
-                    onChange={e => props.setSortBy(e.target.value)}
-                >
-                    <FormControlLabel
-                        sx={{
-                            "& .MuiFormControlLabel-label": {fontSize: '10pt'}
-                        }}
-                        value="description" control={<Radio/>} label="Description"/>
-                    <FormControlLabel
-                        sx={{
-                            "& .MuiFormControlLabel-label": {fontSize: '10pt'}
-                        }}
-                        value="position" control={<Radio/>} label="Position"/>
-                    <FormControlLabel
-                        sx={{
-                            "& .MuiFormControlLabel-label": {fontSize: '10pt'}
-                        }}
-                        value="completed" control={<Radio/>} label="Completed"/>
-                    <FormControlLabel
-                        sx={{
-                            "& .MuiFormControlLabel-label": {fontSize: '10pt'}
-                        }}
-                        value="duedate" control={<Radio/>} label="Due Date"/>
-                </RadioGroup>
+                    onChange={props.setSortBy}
+                    options={[
+                        { value: 'description', label: 'Description' },
+                        { value: 'position', label: 'Position' },
+                        { value: 'completed', label: 'Completed' },
+                        { value: 'duedate', label: 'Due Date' }
+                    ]}
+                    name="sortby"
+                    ariaLabelledBy="radio-buttons-group-for-sort"
+                />
                 <FormControlLabel
                     sx={{mt: 0, fontSize: '6pt'}}
                     control={

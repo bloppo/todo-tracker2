@@ -1,9 +1,7 @@
-
-
 const Home = () => {
 
     return (
-        <div className={"home"}>
+        <div className={"home"} data-testid="home-div">
         </div>
     )
 

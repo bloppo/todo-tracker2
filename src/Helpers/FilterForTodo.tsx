@@ -1,17 +1,15 @@
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import MyAccordion from './MyAccordion';
-import {Radio, TextField} from "@mui/material";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {type FieldValues, useForm} from "react-hook-form";
 
-//import dayjs from 'dayjs';
+import FilterTextField from './InputHelpers/FilterTextField.tsx';
+import FilterRadioGroup from './InputHelpers/FilterRadioGroup.tsx';
+import FilterDatePicker from './InputHelpers/FilterDatePicker.tsx';
 
 import type {FilterByForTodoPropsType, TodoFilterForm} from "../Types/DataTypes.ts";
-import MyDatePicker from "./MyDatePicker.tsx";
 
 const FilterForTodo = (props: FilterByForTodoPropsType) => {
 
@@ -43,92 +41,73 @@ const FilterForTodo = (props: FilterByForTodoPropsType) => {
                         <p>Description and Position can take a regular expresssion to filter on.</p>
                     </div>
                     <div className={"filter-container"}>
-                        <TextField
+                        <FilterTextField
                             id="description"
                             label="Description"
-                            variant="outlined"
-                            size="small"
-                            sx={{fontSize: '10pt'}}
                             value={props.filterByDescription}
-                            onChange={e => props.setFilterByDescription(e.target.value)}
+                            onChange={props.setFilterByDescription}
                         />
-                        <TextField
+                        <FilterTextField
                             id="position"
                             label="Position"
-                            variant="outlined"
-                            size="small"
-                            sx={{fontSize: '10pt'}}
                             value={props.filterByPosition}
-                            onChange={e => props.setFilterByPosition(e.target.value)}
+                            onChange={props.setFilterByPosition}
                         />
-                        <RadioGroup
-                            sx={{backgroundColor: '#aaa',
-                                 padding: "10px",
-                                 gap:"0px",
-                                 border: "1px solid #888",
-                                 borderRadius: 1,
-                                 marginTop: 0}}
-                            aria-labelledby="radio-buttons-group-for-filter"
-                            name="filter-by-completed"
+                        <FilterRadioGroup
+                            title={"Status"}
                             value={props.filterByCompleted}
-                            onChange={e => props.setFilterByCompleted(e.target.value)}
-                        >
-                            <b>Status</b>
-                            <FormControlLabel value="all" control={<Radio size="small"/>} label="All"/>
-                            <FormControlLabel value="completed" control={<Radio size="small"/>} label="Completed"/>
-                            <FormControlLabel value="pending" control={<Radio size="small"/>} label="Pending"/>
-                        </RadioGroup>
+                            onChange={props.setFilterByCompleted}
+                            options={[
+                                { value: 'all', label: 'All' },
+                                { value: 'completed', label: 'Completed' },
+                                { value: 'pending', label: 'Pending' }
+                            ]}
+                            name="filter-by-completed"
+                            ariaLabelledBy="radio-buttons-group-for-filter"
+                        />
                         <b>Due Date Range</b>
-                        <MyDatePicker
+                        <FilterDatePicker
                             name={"dueDateRangeStart"}
                             label={"Due Date Start"}
                             value={props.filterByDueDateRangeStart}
-                            filterByDate={props.filterByDueDateRangeEnd} // Pass end date for comparison
+                            filterByDate={props.filterByDueDateRangeEnd}
                             setFilterByDate={props.setFilterByDueDateRangeStart}
                             control={control}
                             errors={errors}
-                            sx={{backgroundColor: '#ccc', width: 225}}
-                            rules={
-                                {
-                                    validate: value => {
-                                        clearErrors();
-                                        const end = props.filterByDueDateRangeEnd;
-                                        if (value && end) {
-                                            const endDate = end.toDate();
-                                            const startDate = value.toDate();
-                                            return startDate <= endDate || 'Start date must be before end date';
-                                        }
-                                        return true
+                            rules={{
+                                validate: value => {
+                                    clearErrors();
+                                    const end = props.filterByDueDateRangeEnd;
+                                    if (value && end) {
+                                        const endDate = end.toDate();
+                                        const startDate = value.toDate();
+                                        return startDate <= endDate || 'Start date must be before end date';
                                     }
+                                    return true;
                                 }
-                            }
-                        >
-                        </MyDatePicker>
-                        <MyDatePicker
+                            }}
+                        />
+                        <FilterDatePicker
                             name={"dueDateRangeEnd"}
                             label={"Due Date End"}
                             value={props.filterByDueDateRangeEnd}
-                            filterByDate={props.filterByDueDateRangeStart} // Pass start date for comparison
+                            filterByDate={props.filterByDueDateRangeStart}
                             setFilterByDate={props.setFilterByDueDateRangeEnd}
                             control={control}
                             errors={errors}
-                            sx={{backgroundColor: '#ccc', width: 225}}
-                            rules={
-                                {
-                                    validate: value => {
-                                        clearErrors()
-                                        const start = props.filterByDueDateRangeStart;
-                                        if (value && start) {
-                                            const startDate = start.toDate();
-                                            const endDate = value.toDate();
-                                            return endDate >= startDate || 'End date must be after Start date';
-                                        }
-                                        return true
+                            rules={{
+                                validate: value => {
+                                    clearErrors();
+                                    const start = props.filterByDueDateRangeStart;
+                                    if (value && start) {
+                                        const startDate = start.toDate();
+                                        const endDate = value.toDate();
+                                        return endDate >= startDate || 'End date must be after Start date';
                                     }
+                                    return true;
                                 }
-                            }
-                        >
-                        </MyDatePicker>
+                            }}
+                        />
                     </div>
                 </FormControl>
             </MyAccordion>

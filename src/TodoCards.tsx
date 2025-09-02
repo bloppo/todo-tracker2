@@ -49,19 +49,21 @@ const TodoCards = (props: TodoCardsPropsType) => {
     }
 
     const filterItem = (item : ToDoDataType) => {
-
         let passed = true;
-
+        // Log date values for debugging
+        const dueDate = new Date(item.dueDate);
+        const startDate = props.filterByDueDateRangeStart ? new Date(props.filterByDueDateRangeStart.toDate()) : null;
+        const endDate = props.filterByDueDateRangeEnd ? new Date(props.filterByDueDateRangeEnd.toDate()) : null;
+        // eslint-disable-next-line no-console
+        //console.log('Filtering:', { description: item.description, dueDate, startDate, endDate });
         if (props.filterByDescription !== "") {
             const re = new RegExp(props.filterByDescription, "i");
             if (!item.description.match(re)) passed &&= false;
         }
-
         if (props.filterByPosition !== "") {
             const re = new RegExp(props.filterByPosition, "i");
             if (!item.position.match(re)) passed &&= false;
         }
-
         switch (props.filterByCompleted) {
             case "all":
                 passed &&= true;
@@ -75,17 +77,11 @@ const TodoCards = (props: TodoCardsPropsType) => {
             default:
                 passed &&= true;
         }
-
-        if (props.filterByDueDateRangeStart !== null && props.filterByDueDateRangeEnd !== null) {
-
-            const dueDate = new Date(item.dueDate);
-            const startDate = new Date(props.filterByDueDateRangeStart.toDate());
-            const endDate = new Date(props.filterByDueDateRangeEnd.toDate());
-
+        if (startDate !== null && endDate !== null) {
             passed &&= dueDate >= startDate && dueDate <= endDate;
-
         } else passed &&= true;
-
+        // eslint-disable-next-line no-console
+        //console.log('Result:', { description: item.description, passed });
         return passed
 
     }

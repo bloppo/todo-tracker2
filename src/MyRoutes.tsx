@@ -1,4 +1,4 @@
-import {Route, Routes} from "react-router";
+import {Route, Routes} from "react-router-dom";
 import App from "./App.tsx";
 import Home from "./Home.tsx";
 import Login from "./Login.tsx";

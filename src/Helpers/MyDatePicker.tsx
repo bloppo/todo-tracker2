@@ -4,7 +4,8 @@ import {Controller,
     type RegisterOptions,
     type FieldErrors} from "react-hook-form";
 
-import type {TextFieldProps} from "@mui/material";
+//import type {TextFieldProps} from "@mui/material";
+
 import {DatePicker} from "@mui/x-date-pickers";
 import { type SxProps, type Theme } from '@mui/material';
 import dayjs from "dayjs";
@@ -71,9 +72,6 @@ const MyDatePicker = (props:DatePickerPropsType) => {
                             //@ts-expect-error Type issue
                             helperText: customError ? customHelperText : (props.errors[props.name] ? props.errors[props.name]['message'] : ''),
                             sx: props.sx,
-                            FormHelperTextProps: {
-                                'data-testid': 'datepicker-helper-text'
-                            }
                         }
                     }}
                 />

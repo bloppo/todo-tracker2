@@ -1,15 +1,8 @@
-import {StrictMode} from 'react'
-import {createRoot} from 'react-dom/client'
-import CssBaseline from '@mui/material/CssBaseline';
-import {BrowserRouter} from 'react-router'
+//import {StrictMode} from 'react'
+import {renderAppRoot} from './appRoot';
+//import CssBaseline from '@mui/material/CssBaseline';
+//import {BrowserRouter} from 'react-router-dom'
 import './index.css'
-import MyRoutes from "./MyRoutes.tsx";
+//import MyRoutes from "./MyRoutes";
 
-createRoot(document.getElementById('root')!).render(
-    <StrictMode>
-        <CssBaseline/>
-        <BrowserRouter>
-            <MyRoutes/>
-        </BrowserRouter>
-    </StrictMode>
-)
+renderAppRoot(document.getElementById('root')!);

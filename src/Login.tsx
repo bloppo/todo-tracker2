@@ -1,6 +1,5 @@
-
 import useAppState from './AppState';
-import {useNavigate} from "react-router";
+import {useNavigate} from "react-router-dom";
 import {Box, Button,Stack, TextField} from "@mui/material";
 import {type FieldValues, useForm} from "react-hook-form";
 
@@ -25,7 +24,7 @@ const Login = () => {
     return (
             <Box className="login" sx={{p: 2}}>
                 <h1>Login</h1>
-                <form onSubmit={handleSubmit(data => onSubmit(data))}>
+                <form data-testid="login-form" onSubmit={handleSubmit(data => onSubmit(data))}>
                     <Stack spacing={2}>
 
                         <TextField

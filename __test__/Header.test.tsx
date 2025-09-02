@@ -1,20 +1,24 @@
-/* eslint-disable */
+import { render, screen } from '@testing-library/react';
+import Header from '../src/Header';
+import { format } from 'date-fns';
 
-import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
-
-import Header from "../src/Header";
-
-describe("Header Component", () => {
-
-test("renders header with title, GitHub link, and today's date", () => {
+describe('Header Component', () => {
+  it('renders the header title', () => {
     render(<Header />);
-    expect(screen.getByText(/To Do Tracker/i)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /GitHub/i })).toHaveAttribute("href", expect.stringContaining("github.com"));
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('To Do Tracker');
+  });
 
-    // Check today's date in MM/dd/yy format
-    const today = new Date();
-    const pad = (n: number) => n.toString().padStart(2, "0");
-    const expectedDate = `${pad(today.getMonth() + 1)}/${pad(today.getDate())}/${today.getFullYear().toString().slice(-2)}`;
-    expect(screen.getByText(expectedDate)).toBeInTheDocument();
-})});
+  it('renders the GitHub link', () => {
+    render(<Header />);
+    const link = screen.getByRole('link', { name: /github/i });
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute('href', 'https://github.com/bloppo/todo-tracker2');
+  });
+
+  it('renders today\'s date in MM/dd/yy format', () => {
+    render(<Header />);
+    const today = format(new Date(), 'MM/dd/yy');
+    expect(screen.getByText(today)).toBeInTheDocument();
+  });
+});
+

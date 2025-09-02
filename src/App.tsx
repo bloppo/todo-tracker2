@@ -1,6 +1,7 @@
-import {useNavigate, NavLink, Outlet} from "react-router";
+import {useNavigate, NavLink, Outlet} from "react-router-dom";
 import Header from "./Header.tsx";
 import useAppState from "./AppState.ts";
+import { reloadPage } from "./utils/reloadPage";
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
 
     const clearStorage = () => {
         localStorage.removeItem('app-state');
-        window.location.reload();
+        reloadPage();
     }
 
     const logout = () => {
