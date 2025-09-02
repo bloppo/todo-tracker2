@@ -26,6 +26,7 @@ const ListToDoCards = () => {
     const [filterByCompleted, setFilterByCompleted] = useState('all');
     const [filterByDueDateRangeStart, setFilterByDueDateRangeStart] = useState<dayjs.Dayjs | null>(dayjs(firstDay));
     const [filterByDueDateRangeEnd, setFilterByDueDateRangeEnd] = useState<dayjs.Dayjs | null>(dayjs(lastDay));
+    const [expandedAccordion, setExpandedAccordion] = useState<'filter' | 'sort' | false>(false);
 
     const navigate = useNavigate();
 
@@ -39,15 +40,24 @@ const ListToDoCards = () => {
 
                 <Stack direction={"column"} spacing={1}>
                     <h2>Options</h2>
-                    <Stack direction={{xs: "column", sm: "row"}} spacing={2}>
+                    <Stack direction={{xs: "column", sm: "row"}} spacing={2} alignItems="flex-start">
 
                         <SortByForTodo
+                            key="sortAccordion"
                             sortBy={sortBy}
                             setSortBy={setSortBy}
                             sortAsc={sortAsc}
-                            setSortAsc={setSortAsc}/>
+                            setSortAsc={setSortAsc}
+                            expanded={expandedAccordion === 'sort'}
+                            onChange={(_, isExpanded) => {
+                                console.log('SortByForTodo onChange', isExpanded);
+                                setExpandedAccordion(isExpanded ? 'sort' : false);
+                                console.log('expandedAccordion set to', isExpanded ? 'sort' : false);
+                            }}
+                        />
 
                         <FilterForTodo
+                            key="filterAccordion"
                             filterByDescription={filterByDescription}
                             setFilterByDescription={setFilterByDescription}
                             filterByPosition={filterByPosition}
@@ -58,6 +68,12 @@ const ListToDoCards = () => {
                             setFilterByDueDateRangeStart={setFilterByDueDateRangeStart}
                             filterByDueDateRangeEnd={filterByDueDateRangeEnd}
                             setFilterByDueDateRangeEnd={setFilterByDueDateRangeEnd}
+                            expanded={expandedAccordion === 'filter'}
+                            onChange={(_, isExpanded) => {
+                                console.log('FilterForTodo onChange', isExpanded);
+                                setExpandedAccordion(isExpanded ? 'filter' : false);
+                                console.log('expandedAccordion set to', isExpanded ? 'filter' : false);
+                            }}
                         />
 
                     </Stack>
