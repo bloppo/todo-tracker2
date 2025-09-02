@@ -23,48 +23,63 @@ interface DatePickerPropsType {
 }
 
 const MyDatePicker = (props:DatePickerPropsType) => {
-
-return (
-    <Controller
-        name={props.name}
-        defaultValue={null}
-        control={props.control}
-        //@ts-expect-error Type missue
-        rules={props.rules}
-        render={({field: {onChange}}) => (
-            <DatePicker
-                data-testid="my-datepicker"
-                label={props.label}
-                sx={props.sx}
-                value={props.value}
-                onChange={
-                    date => {
-                        onChange(date);
-                        if (date) {
-                            const isoDate = dayjs(date)
-                            props.setFilterByDate(isoDate);
-                        } else {
-                            props.setFilterByDate(null);
+    // Custom error logic for invalid date range
+    let customError = false;
+    let customHelperText = '';
+    if (props.name === 'dueDateRangeEnd' && props.value && props.filterByDate) {
+        // End date must be after start date
+        if (props.value.isBefore(props.filterByDate, 'day')) {
+            customError = true;
+            customHelperText = 'End date must be after start date';
+        }
+    }
+    if (props.name === 'dueDateRangeStart' && props.value && props.filterByDate) {
+        // Start date must be before end date
+        if (props.value.isAfter(props.filterByDate, 'day')) {
+            customError = true;
+            customHelperText = 'Start date must be before end date';
+        }
+    }
+    return (
+        <Controller
+            name={props.name}
+            defaultValue={null}
+            control={props.control}
+            //@ts-expect-error Type missue
+            rules={props.rules}
+            render={({field: {onChange}}) => (
+                <DatePicker
+                    data-testid="my-datepicker"
+                    label={props.label}
+                    sx={props.sx}
+                    value={props.value}
+                    onChange={
+                        date => {
+                            onChange(date);
+                            if (date) {
+                                const isoDate = dayjs(date)
+                                props.setFilterByDate(isoDate);
+                            } else {
+                                props.setFilterByDate(null);
+                            }
                         }
                     }
-                }
-                slotProps={{
-                    textField: {
-                        variant: 'filled',
-                        error: !!props.errors[props.name],
-                        //@ts-expect-error Type issue
-                        helperText: props.errors[props.name] ? props.errors[props.name]['message'] : '',
-                        sx: props.sx,
-                        FormHelperTextProps: {
-                            'data-testid': 'datepicker-helper-text'
+                    slotProps={{
+                        textField: {
+                            variant: 'filled',
+                            error: customError || !!props.errors[props.name],
+                            //@ts-expect-error Type issue
+                            helperText: customError ? customHelperText : (props.errors[props.name] ? props.errors[props.name]['message'] : ''),
+                            sx: props.sx,
+                            FormHelperTextProps: {
+                                'data-testid': 'datepicker-helper-text'
+                            }
                         }
-                    } as Partial<TextFieldProps>
-                }}
-            />
-        )}
-    />
-)   
-    
+                    }}
+                />
+            )}
+        />
+    )
 }
 
 export default MyDatePicker;

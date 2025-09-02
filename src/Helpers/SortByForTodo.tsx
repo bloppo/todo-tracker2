@@ -7,7 +7,6 @@ import {Checkbox} from "@mui/material";
 import MyAccordion from "./MyAccordion.tsx";
 import type {SortByForTodoPropsType} from "../Types/DataTypes.ts";
 
-
 const SortByForTodo = (props: SortByForTodoPropsType) => {
 
     return (

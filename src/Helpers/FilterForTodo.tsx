@@ -83,7 +83,7 @@ const FilterForTodo = (props: FilterByForTodoPropsType) => {
                             name={"dueDateRangeStart"}
                             label={"Due Date Start"}
                             value={props.filterByDueDateRangeStart}
-                            filterByDate={props.filterByDueDateRangeStart}
+                            filterByDate={props.filterByDueDateRangeEnd} // Pass end date for comparison
                             setFilterByDate={props.setFilterByDueDateRangeStart}
                             control={control}
                             errors={errors}
@@ -108,7 +108,7 @@ const FilterForTodo = (props: FilterByForTodoPropsType) => {
                             name={"dueDateRangeEnd"}
                             label={"Due Date End"}
                             value={props.filterByDueDateRangeEnd}
-                            filterByDate={props.filterByDueDateRangeEnd}
+                            filterByDate={props.filterByDueDateRangeStart} // Pass start date for comparison
                             setFilterByDate={props.setFilterByDueDateRangeEnd}
                             control={control}
                             errors={errors}

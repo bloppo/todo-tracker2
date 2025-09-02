@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import FilterForTodo from '../src/Helpers/FilterForTodo';
 import dayjs from 'dayjs';
 
@@ -59,40 +60,36 @@ describe('FilterForTodo', () => {
     expect(defaultProps.setFilterByDueDateRangeEnd).toHaveBeenCalledWith(dayjs('2025-09-02'));
   });
 
-/*
-  it('shows error when start date is after end date', () => {
+  it('shows error when start date is after end date', async () => {
     const props = {
       ...defaultProps,
       filterByDueDateRangeStart: dayjs('2025-09-03'),
       filterByDueDateRangeEnd: dayjs('2025-09-01'),
     };
-      render(<FilterForTodo {...props} />);
+    render(<FilterForTodo {...props} />);
     // Open the accordion so error message is visible
     fireEvent.click(screen.getByTestId('ExpandMoreIcon'));
-    expect(screen.getByText(/start date must be before end date/i)).toBeInTheDocument();
+    // Wait for helper text to appear
+    await waitFor(() => {
+      const helperTexts = Array.from(document.querySelectorAll('.MuiFormHelperText-root'));
+      expect(helperTexts.some(ht => /start date must be before end date/i.test(ht.textContent || ''))).toBe(true);
+    });
   });
-*/
 
-  /*
-    it('shows error when end date is before start date', () => {
-      const props = {
-        ...defaultProps,
-        filterByDueDateRangeStart: dayjs('2025-09-03'),
-        filterByDueDateRangeEnd: dayjs('2025-09-01'),
-      };
-
-        render(<FilterForTodo {...props} />);
-      // Open the accordion so error message is visible
-      fireEvent.click(screen.getByTestId('ExpandMoreIcon'));
-      expect(
-        screen.getByText((content, element) =>
-          element instanceof HTMLElement
-          && element.className.includes('MuiFormHelperText-root')
-          && /end date must be after start date/i.test(content)
-        )
-      ).toBeInTheDocument();
-  */
+  it('shows error when end date is before start date', async () => {
+    const props = {
+      ...defaultProps,
+      filterByDueDateRangeStart: dayjs('2025-09-03'),
+      filterByDueDateRangeEnd: dayjs('2025-09-01'),
+    };
+    render(<FilterForTodo {...props} />);
+    // Open the accordion so error message is visible
+    fireEvent.click(screen.getByTestId('ExpandMoreIcon'));
+    // Wait for helper text to appear
+    await waitFor(() => {
+      const helperTexts = Array.from(document.querySelectorAll('.MuiFormHelperText-root'));
+      expect(helperTexts.some(ht => /end date must be after start date/i.test(ht.textContent || ''))).toBe(true);
+    });
+  });
 
 });
-
-
