@@ -95,7 +95,7 @@ const AddTodo = () => {
                                 required: 'Due Date is required.',
                                 validate: value => goodDate(value) || 'Due Date must be after 08-15-25'
                             }}
-                            //@ts-expect-error
+                            //@ts-expect-error Type issue
                             errors={errors}
                             sx={{backgroundColor: 'white', width: 225}}
                         />

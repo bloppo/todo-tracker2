@@ -5,8 +5,8 @@ import { vi } from 'vitest';
 const navigateMock = vi.fn();
 
 // Partial mock for useNavigate from react-router-dom
-vi.mock('react-router-dom', async (importOriginal) => {
-  const actual = await importOriginal();
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
   return {
     ...actual,
     useNavigate: () => navigateMock,
@@ -34,7 +34,7 @@ const mockTodoData = [
   },
 ];
 vi.mock('../src/AppState', () => ({
-  default: (selector) => selector({
+  default: (selector: (state: { todoData: typeof mockTodoData }) => any) => selector({
     todoData: mockTodoData,
   }),
 }));
@@ -76,7 +76,6 @@ describe('ListToDoCards Component', () => {
       </MemoryRouter>
     );
     const bElements = Array.from(document.querySelectorAll('b'));
-    // eslint-disable-next-line no-console
     bElements.forEach(b => console.log('b:', b.textContent));
     expect(bElements.length).toBeGreaterThanOrEqual(2);
     fireEvent.click(screen.getAllByRole('button', { name: /add todo/i })[0]);

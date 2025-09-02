@@ -4,7 +4,7 @@ import type { Control, FieldErrors, RegisterOptions, FieldValues } from 'react-h
 import type { SxProps, Theme } from '@mui/material';
 import type { TodoFilterForm } from '../../Types/DataTypes.ts';
 
-interface FilterDatePickerProps {
+interface InpDatePickerProps {
   name: string;
   label: string;
   value: dayjs.Dayjs | null;
@@ -16,7 +16,7 @@ interface FilterDatePickerProps {
   rules?: RegisterOptions['validate'];
 }
 
-const FilterDatePicker = (props: FilterDatePickerProps) => (
+const InpDatePicker = (props: InpDatePickerProps) => (
   <MyDatePicker
     name={props.name}
     label={props.label}
@@ -30,4 +30,4 @@ const FilterDatePicker = (props: FilterDatePickerProps) => (
   />
 );
 
-export default FilterDatePicker;
+export default InpDatePicker;

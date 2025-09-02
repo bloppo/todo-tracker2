@@ -8,7 +8,7 @@ interface Option {
   label: string;
 }
 
-interface FilterRadioGroupProps {
+interface InpRadioGroupProps {
   title?: string
   value: string;
   onChange: (value: string) => void;
@@ -18,7 +18,7 @@ interface FilterRadioGroupProps {
   ariaLabelledBy?: string;
 }
 
-const FilterRadioGroup = ({ title,value, onChange, options, sx, name, ariaLabelledBy }: FilterRadioGroupProps) => (
+const InpRadioGroup = ({ title,value, onChange, options, sx, name, ariaLabelledBy }: InpRadioGroupProps) => (
   <RadioGroup
     sx={{ backgroundColor: '#aaa', padding: '10px', gap: '0px', border: '1px solid #888', borderRadius: 1, marginTop: 0, ...sx }}
     aria-labelledby={ariaLabelledBy}
@@ -33,5 +33,5 @@ const FilterRadioGroup = ({ title,value, onChange, options, sx, name, ariaLabell
   </RadioGroup>
 );
 
-export default FilterRadioGroup;
+export default InpRadioGroup;
 

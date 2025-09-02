@@ -5,9 +5,9 @@ import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {type FieldValues, useForm} from "react-hook-form";
 
-import FilterTextField from './InputHelpers/FilterTextField.tsx';
-import FilterRadioGroup from './InputHelpers/FilterRadioGroup.tsx';
-import FilterDatePicker from './InputHelpers/FilterDatePicker.tsx';
+import InpTextField from './InputHelpers/InpTextField.tsx';
+import InpRadioGroup from './InputHelpers/InpRadioGroup.tsx';
+import InpDatePicker from './InputHelpers/InpDatePicker.tsx';
 
 import type {FilterByForTodoPropsType, TodoFilterForm} from "../Types/DataTypes.ts";
 
@@ -41,19 +41,19 @@ const FilterForTodo = (props: FilterByForTodoPropsType) => {
                         <p>Description and Position can take a regular expresssion to filter on.</p>
                     </div>
                     <div className={"filter-container"}>
-                        <FilterTextField
+                        <InpTextField
                             id="description"
                             label="Description"
                             value={props.filterByDescription}
                             onChange={props.setFilterByDescription}
                         />
-                        <FilterTextField
+                        <InpTextField
                             id="position"
                             label="Position"
                             value={props.filterByPosition}
                             onChange={props.setFilterByPosition}
                         />
-                        <FilterRadioGroup
+                        <InpRadioGroup
                             title={"Status"}
                             value={props.filterByCompleted}
                             onChange={props.setFilterByCompleted}
@@ -66,7 +66,7 @@ const FilterForTodo = (props: FilterByForTodoPropsType) => {
                             ariaLabelledBy="radio-buttons-group-for-filter"
                         />
                         <b>Due Date Range</b>
-                        <FilterDatePicker
+                        <InpDatePicker
                             name={"dueDateRangeStart"}
                             label={"Due Date Start"}
                             value={props.filterByDueDateRangeStart}
@@ -87,7 +87,7 @@ const FilterForTodo = (props: FilterByForTodoPropsType) => {
                                 }
                             }}
                         />
-                        <FilterDatePicker
+                        <InpDatePicker
                             name={"dueDateRangeEnd"}
                             label={"Due Date End"}
                             value={props.filterByDueDateRangeEnd}

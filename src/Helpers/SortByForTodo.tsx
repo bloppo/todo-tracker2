@@ -4,7 +4,7 @@ import FormLabel from '@mui/material/FormLabel';
 import {Checkbox} from "@mui/material";
 import MyAccordion from "./MyAccordion.tsx";
 import type {SortByForTodoPropsType} from "../Types/DataTypes.ts";
-import FilterRadioGroup from "./InputHelpers/FilterRadioGroup.tsx";
+import InpRadioGroup from "./InputHelpers/InpRadioGroup.tsx";
 
 const SortByForTodo = (props: SortByForTodoPropsType) => {
 
@@ -31,7 +31,7 @@ const SortByForTodo = (props: SortByForTodoPropsType) => {
                 >
                     <b>Sort By</b>
                 </FormLabel>
-                <FilterRadioGroup
+                <InpRadioGroup
                     value={props.sortBy}
                     onChange={props.setSortBy}
                     options={[

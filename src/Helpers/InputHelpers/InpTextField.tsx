@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material';
 
-interface FilterTextFieldProps {
+interface InpTextFieldProps {
   id: string;
   label: string;
   value: string;
@@ -8,7 +8,7 @@ interface FilterTextFieldProps {
   sx?: object;
 }
 
-const FilterTextField = ({ id, label, value, onChange, sx }: FilterTextFieldProps) => (
+const InpTextField = ({ id, label, value, onChange, sx }: InpTextFieldProps) => (
   <TextField
     id={id}
     label={label}
@@ -20,5 +20,5 @@ const FilterTextField = ({ id, label, value, onChange, sx }: FilterTextFieldProp
   />
 );
 
-export default FilterTextField;
+export default InpTextField;
 
