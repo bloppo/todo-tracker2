@@ -54,7 +54,7 @@ const AddTodo = () => {
         if (value !== null) {
             const selectedDate = value.toDate();
             selectedDate.setHours(0, 0, 0, 0); // Set to start of selected date
-            return selectedDate > today; // Accept dates on today or after
+            return selectedDate >= today; // Accept dates on today or after
         }
         return false;
     }
