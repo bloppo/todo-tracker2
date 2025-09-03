@@ -17,8 +17,8 @@ const MyRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<App/>}>
-                <Route index element={<Home />}/>
-                <Route path="/login" element={<Login />}/>
+                <Route index element={<Home/>}/>
+                <Route path="/login" element={<Login/>}/>
                 <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
                     <Route path="/about" element={<About/>}/>
                     <Route path="/ListCards" element={<ListToDoCards/>}/>

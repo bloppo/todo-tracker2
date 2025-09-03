@@ -109,7 +109,7 @@ Button:hover {
 .sidebar {
     min-width: 30vh;
     min-height: 35vh;
-    flex:1;
+    flex: 1;
     padding: 10px;
     background-color: rgb(201, 129, 21);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
@@ -192,18 +192,18 @@ nav {
     gap: 20px;
 }
 
-.todo-delete{
-    width:75px;
-    padding:2px;
+.todo-delete {
+    width: 75px;
+    padding: 2px;
     background-color: #c98115;
-    color:black;
+    color: black;
 }
 
-.todo-complete{
-    width:75px;
-    padding:2px;
-    background-color:#c98115;
-    color:black;
+.todo-complete {
+    width: 75px;
+    padding: 2px;
+    background-color: #c98115;
+    color: black;
 }
 
 .add-todo {
@@ -235,15 +235,15 @@ nav {
 }
 
 .todo-not-found {
-    margin-top:20px;
-    margin-left:35%;
-    margin-right:35%;
-    width:30%;
-    border:1px solid black;
-    text-align:center;
-    padding:10px;
-    font-size:20pt;
-    background-color:#aaa;
+    margin-top: 20px;
+    margin-left: 35%;
+    margin-right: 35%;
+    width: 30%;
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+    font-size: 20pt;
+    background-color: #aaa;
 }
 
 .button-group {
@@ -257,7 +257,7 @@ nav {
 .about {
     display: flex;
     flex-direction: column;
-    flex:1;
+    flex: 1;
     justify-content: flex-start;
     align-items: center;
     gap: 0;
@@ -272,7 +272,7 @@ nav {
     color: #321f03;
     padding: 15px;
     background-color: #577787;
-    margin-top:0;
+    margin-top: 0;
 }
 
 .footer {
@@ -282,27 +282,27 @@ nav {
 }
 
 .reset-storage-message {
-    font-size:12pt;
-    padding:5px;
+    font-size: 12pt;
+    padding: 5px;
 }
 
-.login-message{
-    background-color:#aaa;
-    font-size:12pt;
-    padding:5px;
-    margin-top:50px;
+.login-message {
+    background-color: #aaa;
+    font-size: 12pt;
+    padding: 5px;
+    margin-top: 50px;
 }
 
 .filter-message {
-    font-size:8pt;
-    width:100%;
-    text-align:left;
+    font-size: 8pt;
+    width: 100%;
+    text-align: left;
 }
 
 .filter-container {
-    display:flex;
-    flex-direction:column;
-    gap:5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 @media (max-width: 400px) {
@@ -313,14 +313,14 @@ nav {
         box-sizing: border-box;
     }
 
-    .home{
+    .home {
         width: 100%;
-        min-height:30vh;
+        min-height: 30vh;
         padding: 4px;
         box-sizing: border-box;
     }
 
-    .footer{
+    .footer {
         width: 100%;
         /*max-width:320px;*/
         padding: 4px;
@@ -330,13 +330,13 @@ nav {
     .main {
         flex-direction: column; /* Stack sidebar and content vertically */
         align-items: center; /* Center items horizontally */
-        max-width:100vw;
+        max-width: 100vw;
         box-sizing: border-box;
     }
 
     .sidebar {
         width: 100%; /* Sidebar takes full width */
-        min-height:20vh;
+        min-height: 20vh;
         /*max-height:300px;*/
         padding: 4px;
         box-sizing: border-box;
@@ -345,20 +345,20 @@ nav {
     .content {
         width: 100%;
         /*max-width:320px;*/
-        min-height:100px;
+        min-height: 100px;
         padding: 4px;
         box-sizing: border-box;
         background-image: none;
     }
 
     .about > p {
-        width:300px;
+        width: 300px;
     }
 
     .todo-not-found {
-        margin-left:10%;
-        margin-right:10%;
-        width:80%;
-        font-size:12pt;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+        font-size: 12pt;
     }
 }

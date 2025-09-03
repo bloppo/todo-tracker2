@@ -1,4 +1,4 @@
 export function reloadPage() {
-  window.location.reload();
+    window.location.reload();
 }
 

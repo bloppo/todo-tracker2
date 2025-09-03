@@ -2,12 +2,12 @@ import {create} from 'zustand';
 import {persist, createJSONStorage} from 'zustand/middleware';
 import {immer} from 'zustand/middleware/immer'
 
-import type {ToDoDataType,AppStateType} from "./Types/DataTypes.ts";
+import type {ToDoDataType, AppStateType} from "./Types/DataTypes.ts";
 
 import todoData from "./assets/tododata.ts";
 import {format, getDaysInMonth} from 'date-fns';
 
-todoData.forEach((item : ToDoDataType) => {
+todoData.forEach((item: ToDoDataType) => {
     const dt = new Date()
     const m = dt.getMonth();
     const y = dt.getFullYear();

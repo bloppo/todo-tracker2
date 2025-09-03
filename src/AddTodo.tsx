@@ -13,7 +13,7 @@ import useAppState from "./AppState.ts";
 
 const AddTodo = () => {
 
-    const {register, handleSubmit, formState: {errors},reset, control} = useForm();
+    const {register, handleSubmit, formState: {errors}, reset, control} = useForm();
 
     const addTodo = useAppState((state) => state.addTodo);
 
@@ -115,22 +115,22 @@ const AddTodo = () => {
                     </Stack>
                 </form>
                 <Dialog open={open}
-                            hideBackdrop
-                            disableScrollLock
-                            slotProps = {{
-                                paper: {
-                                    sx: {
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        boxShadow: 3,
-                                        borderRadius: 2,
-                                        p: 0,
-                                        minWidth: 0,
-                                        maxWidth: 'none',
-                                        background: 'none',
-                                    }
+                        hideBackdrop
+                        disableScrollLock
+                        slotProps={{
+                            paper: {
+                                sx: {
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    boxShadow: 3,
+                                    borderRadius: 2,
+                                    p: 0,
+                                    minWidth: 0,
+                                    maxWidth: 'none',
+                                    background: 'none',
                                 }
+                            }
                         }}
                         sx={{
                             '& .MuiDialog-paper': {
@@ -143,15 +143,16 @@ const AddTodo = () => {
                         }}
                 >
                     <Alert severity="success"
-                           sx={{fontSize: '1rem',
-                                px: 3,
-                                py: 2,
+                           sx={{
+                               fontSize: '1rem',
+                               px: 3,
+                               py: 2,
                                backgroundColor: 'lightgrey',
                                border: '2px solid green',
                                boxShadow: 3,
                                borderRadius: 2,
-                               }}
-                           > Todo added successfully!
+                           }}
+                    > Todo added successfully!
                     </Alert>
                 </Dialog>
             </Box>

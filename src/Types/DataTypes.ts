@@ -1,13 +1,12 @@
 import dayjs from "dayjs";
 import type {CSSProperties, ReactNode} from "react";
 
-export interface ToDoDataType
-{
+export interface ToDoDataType {
     recno: number;
-    description:string;
-    position:string;
-    completed:boolean;
-    dueDate:string;
+    description: string;
+    position: string;
+    completed: boolean;
+    dueDate: string;
 }
 
 export interface AppStateType {

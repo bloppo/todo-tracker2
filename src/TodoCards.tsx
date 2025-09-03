@@ -48,7 +48,7 @@ const TodoCards = (props: TodoCardsPropsType) => {
         setSelectedRecno(null);
     }
 
-    const filterItem = (item : ToDoDataType) => {
+    const filterItem = (item: ToDoDataType) => {
         let passed = true;
         // Log date values for debugging
         const dueDate = new Date(item.dueDate);
@@ -134,21 +134,22 @@ const TodoCards = (props: TodoCardsPropsType) => {
         <div className={"todo-cards"}>
             {
                 todos.length > 0 ? todos.sort((a, b) => sortCmp(a, b))
-                                         .map(item => (
-                    <div key={item.recno} className={"todo-card"}>
-                        <b>{item.description}</b>
-                        <div>Position: {item.position}</div>
-                        <div>Status: {item.completed ? "Done" : "Pending"}</div>
-                        <div>Due: {formatDate(item.dueDate)}</div>
-                        <div className={"button-group"}>
-                            <button className={"todo-delete"}
-                                    onClick={handleDeleteClick(item.recno, item.description)}>Delete
-                            </button>
-                            <button className={"todo-complete"} onClick={completedTodoLocal(item.recno)}>Complete</button>
-                        </div>
-                    </div>
-                ))
-                : <div className={"todo-not-found"}>No todo's found</div>
+                        .map(item => (
+                            <div key={item.recno} className={"todo-card"}>
+                                <b>{item.description}</b>
+                                <div>Position: {item.position}</div>
+                                <div>Status: {item.completed ? "Done" : "Pending"}</div>
+                                <div>Due: {formatDate(item.dueDate)}</div>
+                                <div className={"button-group"}>
+                                    <button className={"todo-delete"}
+                                            onClick={handleDeleteClick(item.recno, item.description)}>Delete
+                                    </button>
+                                    <button className={"todo-complete"} onClick={completedTodoLocal(item.recno)}>Complete
+                                    </button>
+                                </div>
+                            </div>
+                        ))
+                    : <div className={"todo-not-found"}>No todo's found</div>
             }
             <DeleteDialog openDialog={openDialog}
                           description={description}

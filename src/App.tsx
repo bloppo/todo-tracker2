@@ -1,7 +1,7 @@
 import {useNavigate, NavLink, Outlet} from "react-router-dom";
 import Header from "./Header.tsx";
 import useAppState from "./AppState.ts";
-import { reloadPage } from "./utils/reloadPage";
+import {reloadPage} from "./utils/reloadPage";
 
 function App() {
 
@@ -29,19 +29,19 @@ function App() {
                 <div className={"sidebar"}>
                     <br/>
 
-                        { isAuthenticated ? <>
-                            <nav>
-                                <NavLink to="/">Home</NavLink>
-                                <NavLink to="/ListCards">List Todo's</NavLink>
-                                <NavLink to="/addTodo">Add Todo</NavLink>
-                                <NavLink to="/about">About</NavLink>
-                            </nav>
-                            <div>
-                                <button onClick={() => logout()} style={{marginTop:"20px"}}>Log Out</button>
-                            </div>
-                        </> : null}
+                    {isAuthenticated ? <>
+                        <nav>
+                            <NavLink to="/">Home</NavLink>
+                            <NavLink to="/ListCards">List Todo's</NavLink>
+                            <NavLink to="/addTodo">Add Todo</NavLink>
+                            <NavLink to="/about">About</NavLink>
+                        </nav>
+                        <div>
+                            <button onClick={() => logout()} style={{marginTop: "20px"}}>Log Out</button>
+                        </div>
+                    </> : null}
 
-                    <button onClick={() => clearStorage()} style={{marginTop:"20px"}}>Reset Storage</button>
+                    <button onClick={() => clearStorage()} style={{marginTop: "20px"}}>Reset Storage</button>
                     <div className={"reset-storage-message"}>The list of Todo's is reset to the original list.</div>
                 </div>
                 <div className={"content"}>

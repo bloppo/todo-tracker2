@@ -1,4 +1,3 @@
-
 import useAppState from './AppState';
 
 const Logout = () => {
@@ -11,8 +10,8 @@ const Logout = () => {
 
     return (
         <>
-        <div>Log Out</div>
-        <button onClick={() => logout()}>Login</button>
+            <div>Log Out</div>
+            <button onClick={() => logout()}>Login</button>
         </>
     )
 }

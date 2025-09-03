@@ -11,7 +11,7 @@ type DeleteDialogProps = {
     handleConfirmDelete: () => void;
 };
 
-const DeleteDialog = (props:DeleteDialogProps) => {
+const DeleteDialog = (props: DeleteDialogProps) => {
 
     return (
         <Dialog
@@ -20,16 +20,16 @@ const DeleteDialog = (props:DeleteDialogProps) => {
             maxWidth={"xs"}
             fullWidth
             sx={{
-                    '& .MuiPaper-root': {
-                        width: '100%',
-                        maxWidth: '320px',
-                        margin: '8px',
-                        boxSizing: 'border-box',
-                    }
+                '& .MuiPaper-root': {
+                    width: '100%',
+                    maxWidth: '320px',
+                    margin: '8px',
+                    boxSizing: 'border-box',
+                }
             }}
         >
-            <DialogTitle sx={{ fontWeight: 'bold', fontSize: '1.25rem' }}>Confirm Delete</DialogTitle>
-            <DialogContent sx={{ fontSize: '1rem', color: '#555' }}>
+            <DialogTitle sx={{fontWeight: 'bold', fontSize: '1.25rem'}}>Confirm Delete</DialogTitle>
+            <DialogContent sx={{fontSize: '1rem', color: '#555'}}>
                 Are you sure you want to delete the <b>{props.description}</b> todo?
             </DialogContent>
             <DialogActions>

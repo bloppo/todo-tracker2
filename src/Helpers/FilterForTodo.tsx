@@ -15,26 +15,37 @@ import InpDatePicker from './InputHelpers/InpDatePicker.tsx';
 
 import type {FilterByForTodoPropsType, TodoFilterForm} from "../Types/DataTypes.ts";
 
-const FilterForTodo = (props: FilterByForTodoPropsType & { expanded: boolean, onChange: (event: React.SyntheticEvent, isExpanded: boolean) => void }) => {
+const FilterForTodo = (props: FilterByForTodoPropsType & {
+    expanded: boolean,
+    onChange: (event: React.SyntheticEvent, isExpanded: boolean) => void
+}) => {
 
-    const {formState: {errors}, control, clearErrors} = useForm<FieldValues,TodoFilterForm>({mode: 'onChange'});
+    const {formState: {errors}, control, clearErrors} = useForm<FieldValues, TodoFilterForm>({mode: 'onChange'});
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <Box sx={{ width: '100%' }}>
+            <Box sx={{width: '100%'}}>
                 <Accordion
                     expanded={props.expanded}
                     onChange={props.onChange}
-                    sx={{ maxWidth: 200, width: '100%', margin: '0 auto', backgroundColor: '#aaa', p: 0, m: 0, boxShadow: 'none' }}
+                    sx={{
+                        maxWidth: 200,
+                        width: '100%',
+                        margin: '0 auto',
+                        backgroundColor: '#aaa',
+                        p: 0,
+                        m: 0,
+                        boxShadow: 'none'
+                    }}
                 >
                     <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        sx={{ backgroundColor: '#888', px: 2, alignItems: 'center' }}
+                        expandIcon={<ExpandMoreIcon/>}
+                        sx={{backgroundColor: '#888', px: 2, alignItems: 'center'}}
                     >
                         <b>Filter Todo's</b>
                     </AccordionSummary>
-                    <AccordionDetails sx={{ backgroundColor: '#aaa', px: 2, py: 1 }}>
-                        <FormControl component="fieldset" sx={{ width: '100%', backgroundColor: '#aaa', padding: 0 }}>
+                    <AccordionDetails sx={{backgroundColor: '#aaa', px: 2, py: 1}}>
+                        <FormControl component="fieldset" sx={{width: '100%', backgroundColor: '#aaa', padding: 0}}>
                             <FormLabel id="fields-for-filter"
                                        sx={{
                                            fontSize: '10pt',
@@ -48,36 +59,36 @@ const FilterForTodo = (props: FilterByForTodoPropsType & { expanded: boolean, on
                             >
                                 <b>Filter By</b>
                             </FormLabel>
-                            <div className={"filter-message"} style={{ textAlign: 'left', width: '100%' }}>
+                            <div className={"filter-message"} style={{textAlign: 'left', width: '100%'}}>
                                 <p>Description and Position can take a regular expresssion to filter on.</p>
                             </div>
-                            <div className={"filter-container"} style={{ width: '100%' }}>
+                            <div className={"filter-container"} style={{width: '100%'}}>
                                 <InpTextField
                                     id="description"
                                     label="Description"
                                     value={props.filterByDescription}
                                     onChange={props.setFilterByDescription}
-                                    sx={{ width: '100%' }}
+                                    sx={{width: '100%'}}
                                 />
                                 <InpTextField
                                     id="position"
                                     label="Position"
                                     value={props.filterByPosition}
                                     onChange={props.setFilterByPosition}
-                                    sx={{ width: '100%' }}
+                                    sx={{width: '100%'}}
                                 />
                                 <InpRadioGroup
                                     title={"Status"}
                                     value={props.filterByCompleted}
                                     onChange={props.setFilterByCompleted}
                                     options={[
-                                        { value: 'all', label: 'All' },
-                                        { value: 'completed', label: 'Completed' },
-                                        { value: 'pending', label: 'Pending' }
+                                        {value: 'all', label: 'All'},
+                                        {value: 'completed', label: 'Completed'},
+                                        {value: 'pending', label: 'Pending'}
                                     ]}
                                     name="filter-by-completed"
                                     ariaLabelledBy="radio-buttons-group-for-filter"
-                                    sx={{ width: '100%' }}
+                                    sx={{width: '100%'}}
                                 />
                                 <b>Due Date Range</b>
                                 <InpDatePicker
@@ -100,7 +111,7 @@ const FilterForTodo = (props: FilterByForTodoPropsType & { expanded: boolean, on
                                             return true;
                                         }
                                     }}
-                                    sx={{ width: '100%' }}
+                                    sx={{width: '100%'}}
                                 />
                                 <InpDatePicker
                                     name={"dueDateRangeEnd"}
@@ -122,7 +133,7 @@ const FilterForTodo = (props: FilterByForTodoPropsType & { expanded: boolean, on
                                             return true;
                                         }
                                     }}
-                                    sx={{ width: '100%' }}
+                                    sx={{width: '100%'}}
                                 />
                             </div>
                         </FormControl>

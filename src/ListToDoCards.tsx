@@ -80,12 +80,13 @@ const ListToDoCards = () => {
 
                 </Stack>
 
-                <Button style={{backgroundColor:"green",
-                                color:"white",
-                                width:"150px",
-                                padding:"5px",
-                                margin:"5px",
-                                textTransform:"none"
+                <Button style={{
+                    backgroundColor: "green",
+                    color: "white",
+                    width: "150px",
+                    padding: "5px",
+                    margin: "5px",
+                    textTransform: "none"
                 }}
                         variant="outlined"
                         onClick={() => {
